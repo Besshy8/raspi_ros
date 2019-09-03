@@ -3,6 +3,8 @@
 import rospy 
 from std_srvs.srv import Trigger,TriggerResponse
 from raspi_ros.msg import MotorFreq
+from geometry_msgs.msg import Twist
+import math
 
 def srvCallbackOn(srv):    ##srvがないとerror processing request: srvCallback() takes no arguments (1 given)
     print("----------------------")
@@ -47,10 +49,23 @@ def callBackFreq(msg):
         w.write("%d" % right_Freq)  
     return 0
 
+def callBackCmdvel(msg):
+    vel_x = msg.linear.x
+    rot_z = msg.angular.z
+    r = 0.0225
+    left_Freq = (400 / (2*math.pi*r))*vel_x - (400 / math.pi)*rot_z 
+    right_Freq = (400 / (2*math.pi*r))*vel_x + (400 / math.pi)*rot_z
+    with open("/dev/rtmotor_raw_l0","w") as w:
+        w.write("%d" % left_Freq) 
+    with open("/dev/rtmotor_raw_r0","w") as w:
+        w.write("%d" % right_Freq)  
+    return 0
+
 if __name__ == "__main__":
     rospy.init_node("Motors")
     srvs_on = rospy.Service("motor_on",Trigger,srvCallbackOn)
     srv_off = rospy.Service("motor_off",Trigger,srvCallbackOff)   ##srv_offが無くても動く
-    sub = rospy.Subscriber("motorFreq",MotorFreq,callBackFreq)
+    sub_ferq = rospy.Subscriber("motorFreq",MotorFreq,callBackFreq)
+    sub_vel = rospy.Subscriber("motorCmdvel",Twist,callBackCmdvel)
     print("Service Server start!")
     rospy.spin()
