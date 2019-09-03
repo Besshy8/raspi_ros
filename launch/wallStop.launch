@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="raspi_ros" type="lightsensorController.py" name="LightSensorController" required="true" output="screen"/>
+    <node pkg="raspi_ros" type="lightsensors.py" name="lightsensors" required="true"/>
+    <node pkg="raspi_ros" type="motors.py" name="Motors" required="true" output="screen"/>
+</launch>
