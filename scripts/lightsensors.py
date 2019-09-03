@@ -20,5 +20,7 @@ if __name__ == "__main__":
             m.r_front = d[1]
             m.l_front = d[2]
             m.l_side = d[3]
+            m.sum = d[0] + d[1] + d[2] + d[3] 
+            m.sum_forward = d[1] + d[2]
             pub.publish(m)
             rate.sleep()

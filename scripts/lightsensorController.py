@@ -9,6 +9,8 @@ def getLightsensor(msg):
     print("Right_front: %d" % msg.r_front)
     print("Left_front : %d" % msg.l_front)
     print("Left_side  : %d" % msg.l_side)
+    print("Sum        : %d" % msg.sum)
+    print("Sum_forward: %d" % msg.sum_forward)
     
 if __name__ == "__main__":
     rospy.init_node("LightSensorController")
