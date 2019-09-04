@@ -10,23 +10,20 @@ def joyToCmdvel(msg):
     if msg.buttons[0] == 1:
         m.angular.z = -math.pi / 2
         pub.publish(m)
-    if msg.buttons[1] == 1:
+    elif msg.buttons[1] == 1:
         m.linear.x = -0.125
         pub.publish(m)
-    if msg.buttons[2] == 1:
+    elif msg.buttons[2] == 1:
         m.angular.z = math.pi / 2
         pub.publish(m)
-    if msg.buttons[3] == 1:
+    elif msg.buttons[3] == 1:
         m.linear.x = 0.125
         pub.publish(m)
-
-    
-    '''
     else:
         m.linear.x = 0.0   ##最初におしたボタンしか反応しなかった
         m.angular.z = 0.0
         pub.publish(m)
-    '''       
+           
         
 if __name__ == "__main__":
     rospy.init_node("JoyStickController")
