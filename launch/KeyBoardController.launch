@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="raspi_ros" type="keyboardController.py" name="KeyBoardController" output="screen" required="true" />
+    <node pkg="raspi_ros" type="motors.py" name="Motors" required="true"/>
+</launch>
