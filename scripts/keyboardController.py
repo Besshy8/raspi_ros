@@ -33,7 +33,7 @@ if __name__ == "__main__":
             try:
                 srv = rospy.ServiceProxy("motor_on",Trigger)
                 on = srv()  ##ここで実際にサービス要請
-                print(on.success)
+                print(on.success)    ##ここの書式をどうにかする
                 print("[message] : %s" % on.message)
                 print("-----MotorON------")
             except rospy.ServiceException as e:
