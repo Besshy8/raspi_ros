@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="joy" type="joy_node" name="DUALSHOCK4" />
+    <node pkg="raspi_ros" type="joystickController.py" name="JoyStickController" />
+    <node pkg="raspi_ros" type="motors.py" name="Motors" />
+</launch>
