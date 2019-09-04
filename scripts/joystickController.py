@@ -23,7 +23,7 @@ def joyToCmdvel(msg):
     
     '''
     else:
-        m.linear.x = 0.0
+        m.linear.x = 0.0   ##最初におしたボタンしか反応しなかった
         m.angular.z = 0.0
         pub.publish(m)
     '''       
