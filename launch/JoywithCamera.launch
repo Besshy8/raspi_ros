@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="joy" type="joy_node" name="DUALSHOCK4" required="true"/>
+    <node pkg="raspi_ros" type="joystickController.py" name="JoyStickController" output="screen" required="true"/>
+    <node pkg="raspi_ros" type="motors.py" name="Motors" required="true"/>
+    <node pkg="cv_camera" type="cv_camera_node" name="Camera" >
+        <param name="rate" value="10.0"/>
+        <param name="image_wigth" value="320"/>
+        <param name="image_height" value="240"/>
+    </node>
+    <node pkg="mjpeg_server" type="mjpeg_server" name="mjeg_server">
+        <param name="port" value="10000"/>
+    </node>
+</launch>
