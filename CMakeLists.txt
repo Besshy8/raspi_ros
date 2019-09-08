@@ -12,6 +12,8 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   std_srvs
   sensor_msgs
+  nav_msgs
+  tf
   message_generation
 )
 
