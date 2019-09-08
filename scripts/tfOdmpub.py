@@ -5,10 +5,18 @@ from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
 
 def cmdvel_to_tf(v_x,v_th,dt):
-
+    
     return 0
 
 def cmdvel_to_Odm(v_x,v_th,dt):
+    global x
+    global y
+    global theta
+    x += v_x * dt
+    theta += v_th * dt
+    print("+++++++++ Odmetry ++++++++++")
+    print("x :     %f" % x)
+    print("theta : %f" % theta)
     return 0
 
 def timeCounter(last_time):
@@ -53,5 +61,8 @@ if __name__ == "__main__":
     now_time = rospy.Time.now().to_sec()
     v_x = 0
     v_th = 0
+    x = 0.0
+    y = 0.0
+    theta = 0.0
     sub = rospy.Subscriber("motorCmdvel",Twist,call_tfOdmtransformer)
     rospy.spin()
