@@ -41,7 +41,7 @@ def joyToCmdvel(msg):
         m.linear.x = 0.125
         pub.publish(m)
     else:
-        m.linear.x = 0.0   
+        m.linear.x = 0.0     #この部分でmotor_onoffの時にtopicも送信してしまうためオドメトリが計算されてしまう
         m.angular.z = 0.0
         pub.publish(m)
            
