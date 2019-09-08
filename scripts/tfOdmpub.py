@@ -37,6 +37,6 @@ def call_tfOdmtransformer(msg):
 
 if __name__ == "__main__":
     rospy.init_node("Cmd_to_tfOdm")
-    now_time = 0
+    now_time = rospy.Time.now().to_sec()
     sub = rospy.Subscriber("motorCmdvel",Twist,call_tfOdmtransformer)
     rospy.spin()
