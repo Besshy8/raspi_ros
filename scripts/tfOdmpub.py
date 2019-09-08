@@ -6,9 +6,43 @@
 import rospy,tf,math
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
+##from geometry_msgs.msg import TransformStamped
 
-def cmdvel_to_tf(v_x,v_th,dt):
+def cmdvel_to_tf(v_x,v_th,dt,now_time):
+    global x
+    global y
+    global theta
+    #-------------------------
+    x += v_x * math.cos(theta) * dt
+    y += v_x * math.sin(theta) * dt
+    theta += v_th * dt
     odm_Quaternion = tf.transformations.quaternion_from_euler(0,0,theta)
+    
+
+    odom_broadcaster = tf.TransformBroadcaster()
+
+    '''
+    odom_trans = TransformStamped()
+    odom_trans.header.stamp = now_time
+    odom_trans.header.frame_id = "odom"
+    odom_trans.child_frame_id = "base_link"
+   
+    odom_trans.transform.translation.x = x
+    odom_trans.transform.translation.y = y
+    odom_trans.transform.translation.z = 0.0;
+    
+    odom_trans.transform.rotation.x = odm_Quaternion[0]
+    odom_trans.transform.rotation.y = odm_Quaternion[1]
+    odom_trans.transform.rotation.z = odm_Quaternion[2]
+    odom_trans.transform.rotation.w = odm_Quaternion[3]
+    '''
+    ##//send the transform
+    odom_broadcaster.sendTransform((x, y, 0.0),
+        odm_Quaternion,
+        now_time,
+        "base_link",
+        "odom")
+
     return 0
 
 ## wiki.ros.org
@@ -77,7 +111,7 @@ def call_tfOdmtransformer(msg):
         print("velocity_x    : %f" % v_x)
         print("velocity_theta: %f" % v_th)
         print("dt        : %f" % dt)
-        cmdvel_to_tf(v_x,v_th,dt)
+        cmdvel_to_tf(v_x,v_th,dt,now_time)
         cmdvel_to_Odm(v_x,v_th,dt,now_time) ## 止まっている時はtf,Odmを送らないような実装になっている
     else:
         v_x = msg.linear.x
