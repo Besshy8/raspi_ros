@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>    
-    <node pkg="raspi_ros" type="tfOdmpub.py" name="Cmd_to_tfOdm" />
+    
 
     <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping" output="screen">
         <param name="inverted_laser" value="false"/>
