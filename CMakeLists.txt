@@ -57,6 +57,7 @@ find_package(catkin REQUIRED COMPONENTS
    FILES
    LightSensors.msg
    MotorFreq.msg
+   GoTwist.msg
  )
 
 ##################################################################

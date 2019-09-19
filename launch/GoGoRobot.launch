@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="raspi_ros" type="motors" name="motors" />
+    <node pkg="joy" type="joy_node" name="DUALSHOCK4" required="true"/>
+    <node pkg="raspi_ros" type="joystickControllerforGo.py" name="JoyStickController" output="screen" required="true"/>
+    <node pkg="raspi_ros" type="TwistToGoTwist.py" name="TransformMSG" />
+</launch>
