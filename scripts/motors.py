@@ -58,7 +58,10 @@ def callBackCmdvel(msg):
     with open("/dev/rtmotor_raw_l0","w") as w:
         w.write("%d" % left_Freq) 
     with open("/dev/rtmotor_raw_r0","w") as w:
-        w.write("%d" % right_Freq)  
+        w.write("%d" % right_Freq)
+    ## for Debag
+    with open("/home/ubuntu/text/file.txt","w") as w:
+        w.write("%d" % right_Freq)
     return 0
 
 if __name__ == "__main__":
