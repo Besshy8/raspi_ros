@@ -5,6 +5,7 @@
         <arg name="port" default="9000"/>    
     </include>
     <node pkg="raspi_ros" type="detected_face.py" name="face_detecter" />
+    <node pkg="raspi_ros" type="lightsensors.py" name="lightsensors" />
     <node pkg="cv_camera" type="cv_camera_node" name="cv_camera" >
         <param name="rate" value="10.0"/>
         <param name="image_width" value="320"/>
