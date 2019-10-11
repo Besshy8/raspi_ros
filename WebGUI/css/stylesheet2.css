@@ -1,3 +1,5 @@
+
+
 body {
     margin:0px;
     padding:0px;
@@ -47,7 +49,8 @@ body {
 }
 
 .sensor-title{
-    margin :30px 110px 0px 0px;
+    margin :0px 110px 0px 0px;
+    padding:0px 0px 0px 0px;
 }
 
 #login-form {
@@ -66,7 +69,7 @@ body {
 }
 
 .value-title-modal{
-    padding:20px 40px 20px 20px;
+    padding:20px 0px 20px 0px;
     font-size: 15px;
     background-color: lemonchiffon;
     
@@ -105,7 +108,7 @@ body {
 
 .value-right-side-modal{
     background-color: antiquewhite;
-    padding:20px 70px 20px 20px;
+    padding:20px 40px 20px 40px;
 }
 
 .value-right-front-modal{
@@ -166,12 +169,12 @@ body {
 
 #submit-btn {
     display: inline-block;
-    padding: 14px 140px;
-    background-color: #5dca88;
+    padding: 50px 0px;
+    background-color:#5dca88;
     border: none;
     border-radius: 3px;
     color: white;
-    margin: 40px 80px 40px  0px;
+    margin: 40px 0px 40px  100px;
     cursor: pointer;
 }
 
@@ -199,6 +202,9 @@ table {
     border-collapse: collapse;
 
 }
+
+
+
 
 .sensor {
     padding: 10px 30px 10px 20px;
@@ -440,3 +446,5 @@ td {
     float: left;
     margin: 10px 20px 10px 20px;
 }
+
+
