@@ -67,4 +67,98 @@ $(function(){
         });
     });
 
+    const cmdVel = new ROSLIB.Topic({
+        ros : ros,
+        name : "motorCmdvel",
+        messageType : "geometry_msgs/Twist"
+    });
+
+    const twist_front = new ROSLIB.Message({
+        linear : {
+            x : 0.125,
+            y : 0.0,
+            z : 0.0
+           },
+        angular : {
+            x : 0.0,
+            y : 0.0,
+            z : 0.0
+           }
+    });
+
+    $("#front").click(function(){
+        cmdVel.publish(twist_front);
+        console.log("Go front !");
+    });
+
+    const twist_turn_r = new ROSLIB.Message({
+        linear : {
+            x : 0.0,
+            y : 0.0,
+            z : 0.0
+           },
+        angular : {
+            x : 0.0,
+            y : 0.0,
+            z : -1.57
+           }
+    });
+
+    $("#right").click(function(){
+        cmdVel.publish(twist_turn_r);
+        console.log("Turn Right !");
+    });
+
+    const twist_turn_l = new ROSLIB.Message({
+        linear : {
+            x : 0.0,
+            y : 0.0,
+            z : 0.0
+           },
+        angular : {
+            x : 0.0,
+            y : 0.0,
+            z : 1.57
+           }
+    });
+
+    $("#left").click(function(){
+        cmdVel.publish(twist_turn_l);
+        console.log("Turn Left !");
+    });
+
+    const twist_back = new ROSLIB.Message({
+        linear : {
+            x : -0.125,
+            y : 0.0,
+            z : 0.0
+           },
+        angular : {
+            x : 0.0,
+            y : 0.0,
+            z : 0.0
+        }
+    });
+
+    $("#down").click(function(){
+        cmdVel.publish(twist_back);
+        console.log("Go back");
+    });
+
+    const stop = new ROSLIB.Message({
+        linear : {
+            x : 0.0,
+            y : 0.0,
+            z : 0.0
+           },
+        angular : {
+            x : 0.0,
+            y : 0.0,
+            z : 0.0
+           }
+    });
+
+    $(".btn-circle-stitch").click(function(){
+        cmdVel.publish(stop);
+    });
 });
