@@ -37,7 +37,34 @@ $(function(){
         $(".value-sum-front").text(message.sum_forward);
         
         //console.log(message);
-
-        
     });
+
+    const motor_on = new ROSLIB.Service({
+        ros : ros,
+        name : "motor_on",
+        serviceType:"std_srvs/Trigger",
+    });
+
+    const motor_off = new ROSLIB.Service({
+        ros : ros,
+        name : "motor_off",
+        serviceType:"std_srvs/Trigger",
+    });
+
+    let request = new ROSLIB.ServiceRequest();
+
+    $(".btn-gradient-3d-orange").click(function(){
+        motor_on.callService(request, result => {
+            console.log(result.success);
+            console.log(result.message);
+        });
+    });
+
+    $(".btn-gradient-3d-orange-green").click(function(){
+        motor_off.callService(request, result => {
+            console.log(result.success);
+            console.log(result.message);
+        });
+    });
+
 });
