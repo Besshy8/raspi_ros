@@ -36,9 +36,12 @@ def callback(msg):
     d_std = d / 320
     p = d_std * (math.pi / 2)
 
+    """
     m = Twist()
     m.angular.z = p
     pub_cmdvel.publish(m)
+
+    """
 
     try:
         pub.publish(bridge.cv2_to_imgmsg(img_det,"bgr8"))
